@@ -1,0 +1,46 @@
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "parser": "babel-eslint",
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "new-cap": 0,
+    "strict": 0,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 1,
+    "eol-last": 1,
+    "indent": [2, 2, { "SwitchCase": 0 }],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [2, "always"],
+    "no-console": 1,
+    "no-debugger": 2,
+    "no-dupe-keys": 2,
+    "no-dupe-args": 2,
+    "no-invalid-regexp": 2,
+    "no-duplicate-case": 2,
+    "use-isnan": 2,
+    "no-sparse-arrays": 2,
+    "no-unreachable": 2,
+    "valid-typeof": 2,
+    "no-cond-assign": 2,
+    "no-func-assign": 2,
+    "no-obj-calls": 2,
+    "no-unused-vars": [1, {
+      "argsIgnorePattern": "^_",
+      "varsIgnorePattern": "^debug$|^assert$|^withTransaction$"
+    }]
+  }
+}

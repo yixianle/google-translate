@@ -1,0 +1,9 @@
+bin
+public
+node_modules
+build
+config
+*-compiled.js
+*/*-compiled.js
+*/*/*-compiled.js
+*/*/*/*-compiled.js

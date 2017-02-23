@@ -1,0 +1,7 @@
+button {
+  transition: all 0.45s;
+}
+
+* {
+  outline: none !important;
+}

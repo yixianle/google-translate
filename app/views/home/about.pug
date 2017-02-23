@@ -1,0 +1,11 @@
+extends ../layout/layout.pug
+
+block content
+  #article
+    article.article
+      h1.article-title
+        = title
+      .article-info 
+        | about kails
+      .article-content
+        != markdown(content)
