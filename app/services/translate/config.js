@@ -1,4 +1,6 @@
+const translateGoogle = 'https://translate.google.com.hk/translate?'
 
-export default {
-  translateUrl: 'https://translate.google.com.hk/translate?'
+
+export {
+  translateGoogle
 }

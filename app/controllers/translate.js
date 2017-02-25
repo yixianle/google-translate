@@ -1,12 +1,12 @@
 import models from '../models/index';
 import { markdown } from '../helpers/markdown';
 
-import  translate  from '../services/translate/index'
+import  translate,{ getPage }  from '../services/translate/index'
 
 const page = async (ctx, next) => {
   let url = 'https://nodejs.org/en/'
   console.log("---------http translate page------------")
-  let val = await translate.getPage(url)
+  let val = await getPage(url)
   //console.log(val,"----- out page -------")
   ctx.body=val
 

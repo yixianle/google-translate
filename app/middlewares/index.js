@@ -19,7 +19,7 @@ async function catchError(ctx, next) {
     if (status === 500) {
       console.log('server error', err, ctx);
     }
-    await ctx.render('error/error', {});
+    await ctx.render('error/error', {err:err});
   }
 }
 
