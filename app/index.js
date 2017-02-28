@@ -57,14 +57,14 @@ app.use(views(__dirname + '/views', { extension: 'pug' }));
 app.use(middlewares.catchError);
 
 // csrf
-app.use(new CSRF({
-  invalidSessionSecretMessage: 'Invalid session secret',
-  invalidSessionSecretStatusCode: 403,
-  invalidTokenMessage: 'Invalid CSRF token',
-  invalidTokenStatusCode: 403,
-  excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
-  disableQuery: false
-}));
+// app.use(new CSRF({
+//   invalidSessionSecretMessage: 'Invalid session secret',
+//   invalidSessionSecretStatusCode: 403,
+//   invalidTokenMessage: 'Invalid CSRF token',
+//   invalidTokenStatusCode: 403,
+//   excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
+//   disableQuery: false
+// }));
 
 // add helpers for views
 app.use(middlewares.addHelper);

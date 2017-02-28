@@ -1,38 +1,32 @@
 import models from '../models/index';
 import { markdown } from '../helpers/markdown';
 
-import  translate,{ getPage }  from '../services/translate/index'
+import  translate,{ getPage, getText }  from '../services/translate/index';
+import {isUrl} from '../util';
 
 const page = async (ctx, next) => {
   let url = 'https://nodejs.org/en/'
   console.log("---------http translate page------------")
-  let val = await getPage(url)
-  //console.log(val,"----- out page -------")
-  ctx.body=val
-
-  return;
-
-  const article = await models.Article.findById(ctx.params.id);
-  if(article == null){
-    ctx.redirect('/');
-    return;
+  // console.log(ctx.request.body)
+  console.log(ctx.query.u)
+  if(isUrl(ctx.query.u)){
+    let val = await getPage(url)
+    //console.log(val,"----- out page -------")
+    ctx.body=val
   }
-  const author = await models.User.findById(article.userId);
-  let canEdit = ctx.state.isUserSignIn && ctx.state.currentUser.id === author.id;
-  const articleHtml = await markdown(article.content);
-  const locals = {
-    nav: 'article',
-    title: article.title,
-    description: article.description,
-    article: article,
-    articleHtml: articleHtml,
-    canEdit: canEdit,
-    author: author
-  };
-  await ctx.render('articles/show', locals);
+  
 };
 
+const api = async (ctx, next) => {
+  console.log("-----api-------")
 
-export default {
-  page
+  let text = ctx.request.body.text
+
+  let val = await getText(text,{to: 'zh-CN'})
+  ctx.body = val
+}
+
+module.exports = {
+  page,
+  api
 };

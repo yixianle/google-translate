@@ -12,19 +12,20 @@ const postcssReporter = require('postcss-reporter');
 module.exports = {
   context: path.resolve(__dirname, '../', '../'),
   entry: {
-    application: './app/assets/javascripts/application.js',
-    articles: './app/assets/javascripts/articles.js',
-    editor: './app/assets/javascripts/editor.js'
+    index: './app/react/index.js'
+    // application: './app/assets/javascripts/application.js',
+    // articles: './app/assets/javascripts/articles.js',
+    // editor: './app/assets/javascripts/editor.js'
   },
   node: {
     fs: "empty"
   },
   module: {
-    preLoaders: [{
-      test: /\.js$/,
-      loader: 'eslint-loader',
-      exclude: /node_modules/
-    }],
+    // preLoaders: [{
+    //   test: /\.js$/,
+    //   loader: 'eslint-loader',
+    //   exclude: /node_modules/
+    // }],
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -32,6 +33,10 @@ module.exports = {
       query: {
         presets: ['react', 'es2015']
       }
+    },{
+      test: /\.js$/, 
+      loaders: ['babel-loader'], 
+      exclude: /node_modules/
     },{
       test: /\.coffee$/,
       exclude: /node_modules/,
@@ -72,10 +77,10 @@ module.exports = {
       fileName: 'kails_manifest.json'
     })
   ],
-  eslint: {
-    configFile: '.eslintrc.json',
-    failOnError: false
-  },
+  // eslint: {
+  //   configFile: '.eslintrc.json',
+  //   failOnError: false
+  // },
   postcss: function(webpack) {
     return [
       postcssImport({addDependencyTo: webpack}),

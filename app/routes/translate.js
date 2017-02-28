@@ -1,12 +1,12 @@
 import Router from 'koa-router';
-import translate from '../controllers/translate';
+import { page, api } from '../controllers/translate';
 
 const router = Router({
   prefix: '/translate'
 });
-router.get('/page', translate.page );
-router.get('/api', translate.page);
-router.post('/', translate.page );
+router.get('/page', page );
+router.post('/api', api );
+router.get('/api', api);
 
 // for require auto in index.js
 module.exports = router;
