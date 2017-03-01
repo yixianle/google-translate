@@ -2,11 +2,11 @@ import  translate,{ getPage, getText }  from '../services/translate/index';
 import {isUrl} from '../util';
 
 const page = async (ctx, next) => {
-  let url = 'https://nodejs.org/en/'
+  let url = ctx.query.u || 'https://nodejs.org/en/'
   console.log("---------http translate page------------")
   // console.log(ctx.request.body)
-  console.log(ctx.query.u)
-  if(isUrl(ctx.query.u)){
+  console.log(url)
+  if(isUrl(url)){
     let val = await getPage(url)
     //console.log(val,"----- out page -------")
     ctx.body=val
