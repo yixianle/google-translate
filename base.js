@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
+const publicPath = path.resolve(__dirname, 'public', 'assets');
 const ManifestPlugin = require('webpack-manifest-plugin');
-const assetHost = require('../config').assetHost;
+const assetHost = require('./config/config.js').assetHost;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const stylelint = require('stylelint');
 // const postcssImport = require('postcss-import');
@@ -10,7 +10,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const postcssReporter = require('postcss-reporter');
 
 module.exports = {
-  context: path.resolve(__dirname, '../', '../'),
+  //context: path.resolve(__dirname, '../', '../'),
   entry: {
     index: './app/browser/index.js'
   },
@@ -61,16 +61,6 @@ module.exports = {
     publicPath: assetHost + '/assets/',
     filename: '[name]_bundle.js'
   },
-  // plugins: [
-  //   // new webpack.ProvidePlugin({
-  //   //   $: 'jquery',
-  //   //   jQuery: 'jquery'
-  //   // }),
-  //   // new webpack.HotModuleReplacementPlugin(),
-  //   new ManifestPlugin({
-  //     fileName: 'trans_manifest.json'
-  //   })
-  // ],
   // eslint: {
   //   configFile: '.eslintrc.json',
   //   failOnError: false

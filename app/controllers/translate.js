@@ -1,6 +1,3 @@
-import models from '../models/index';
-import { markdown } from '../helpers/markdown';
-
 import  translate,{ getPage, getText }  from '../services/translate/index';
 import {isUrl} from '../util';
 

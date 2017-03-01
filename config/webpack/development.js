@@ -27,10 +27,10 @@ var config = _.merge(base, {
   // }
 });
 
-config.plugins.push(
-  new ExtractTextPlugin('[name]_bundle.css', {
-    allChunks: true
-  })
-);
+// config.plugins.push(
+//   new ExtractTextPlugin('[name]_bundle.css', {
+//     allChunks: true
+//   })
+// );
 
 module.exports = config;

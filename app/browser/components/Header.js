@@ -30,7 +30,7 @@ export default class Header extends Component {
     timeoutId && clearTimeout(timeoutId)
     timeoutId = setTimeout(() => {
       changeVal(input.value)
-    }, 2*1000);
+    }, 1*1000);
     
   }
 

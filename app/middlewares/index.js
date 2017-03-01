@@ -1,6 +1,5 @@
-import helpers from '../helpers';
-import models from '../models';
 
+// 异常监听处理
 async function catchError(ctx, next) {
   try {
     await next();
@@ -11,34 +10,20 @@ async function catchError(ctx, next) {
       status = 500;
     }
     ctx.status = status;
-    ctx.state = {
-      status: status,
-      helpers: helpers,
-      currentUser: null,
-    };
+    
     if (status === 500) {
       console.log('server error', err, ctx);
+      ctx.body = {
+        error: err
+      }
+    }else{
+      ctx.redirect('/404.html')
     }
-    await ctx.render('error/error', {err:err});
   }
 }
 
-async function addHelper(ctx, next) {
-  let currentUser = null;
-  if(ctx.session.userId){
-    currentUser = await models.User.findById(ctx.session.userId);
-  }
-  if (!ctx.state) {
-    ctx.state = {};
-  }
-  ctx.state.csrf = ctx.csrf;
-  ctx.state.helpers = helpers;
-  ctx.state.currentUser = currentUser;
-  ctx.state.isUserSignIn = (currentUser != null);
-  await next();
-}
 
 export default {
-  catchError,
-  addHelper
+  catchError
+  //addHelper
 };
