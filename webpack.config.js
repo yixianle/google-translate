@@ -1,36 +1,46 @@
 'use strict';
 let path = require('path');
-var webpack = require('webpack')
+var webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const stylelint = require('stylelint');
 
 var env = process.env.NODE_ENV
 var config = {
   entry: {
-    index: './app/react/index.js'
-    // application: './app/assets/javascripts/application.js',
-    // articles: './app/assets/javascripts/articles.js',
-    // editor: './app/assets/javascripts/editor.js'
+    index: './browser/index.js'
+  },
+  output: {
+    path: path.join(__dirname, '/public'),
+    filename: 'assets/[name]_bundle.js'
   },
   module: {
     loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['babel-loader']
+      },
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract('style', 'css!postcss')
       }
     ]
   },
-  output: {
-    path: path.join(__dirname, '/public/assets'),
-    filename: '[name]_bundle.js'
-  },
-  plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env)
-    })
-  ]
+  plugins: [new HtmlWebpackPlugin({
+    filename: 'index.html',
+    template: './browser/index.html',
+    inject: 'body'
+  })]
+  // ,
+  // plugins: [
+  //   new webpack.optimize.OccurrenceOrderPlugin(),
+  //   new webpack.DefinePlugin({
+  //     'process.env.NODE_ENV': JSON.stringify(env)
+  //   })
+  // ]
 };
 
 if (env === 'production') {
