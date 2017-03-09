@@ -3,6 +3,7 @@ let path = require('path');
 var webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const stylelint = require('stylelint');
 
@@ -20,7 +21,10 @@ var config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader']
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015','stage-0','react']
+        }
       },
       {
         test: /\.css$/,

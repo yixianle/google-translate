@@ -6,21 +6,16 @@
   "main": "build/index.js",
   "scripts": {
     "console": "babel-node app/index.js console",
-    "start": "supervisor app/start.js & webpack --config config/webpack/development.js -d -w",
-    "nodemon": "nodemon app/index.js & webpack --config config/webpack/development.js --progress --colors --watch",
-    "app": "babel-node app/index.js",
-    "build": "rm -rf build/ && babel -d build app && cp -r app/views build/views",
-    "pm2": "NODE_ENV=production pm2 start build/index.js -i 2 --name \"kails\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
-    "pm2:docker": "NODE_ENV=production pm2 start build/index.js --no-daemon -i 2 --name \"kails\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
-    "pm2:restart": "NODE_ENV=production pm2 restart \"kails\"",
-    "pm2:stop": "NODE_ENV=production pm2 stop \"kails\"",
-    "pm2:monit": "NODE_ENV=production pm2 monit \"kails\"",
-    "pm2:logs": "NODE_ENV=production pm2 logs \"kails\"",
-    "mocha": "NODE_ENV=test babel-node node_modules/.bin/_mocha --recursive --timeout 80000 test/",
-    "test": "npm run mocha",
-    "assets_build": "webpack --config config/webpack/development.js",
-    "assets_compile": "NODE_ENV=production node_modules/.bin/webpack --config config/webpack/production.js -p",
-    "webpack_dev": "webpack --config config/webpack/development.js --progress --colors --watch",
+    "start": "supervisor app/start.js & webpack -d -w",
+    "nodemon": "nodemon app/index.js & webpack --progress --colors --watch",
+    "build": "NODE_ENV=production webpack -p && rm -rf build/ && babel -d build app",
+    "pm2": "NODE_ENV=production pm2 start build/index.js -i 2 --name \"trans\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
+    "pm2:docker": "NODE_ENV=production pm2 start build/index.js --no-daemon -i 2 --name \"trans\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
+    "pm2:restart": "NODE_ENV=production pm2 restart \"trans\"",
+    "pm2:stop": "NODE_ENV=production pm2 stop \"trans\"",
+    "pm2:monit": "NODE_ENV=production pm2 monit \"trans\"",
+    "pm2:logs": "NODE_ENV=production pm2 logs \"trans\"",
+    "webpack_dev": "webpack --config --progress --colors --watch",
     "lint": "eslint . --ext .js"
   },
   "dependencies": {
@@ -92,6 +87,7 @@
     "precss": "^1.4.0",
     "stylelint": "^7.2.0",
     "stylelint-config-standard": "^13.0.0",
+    "uglifyjs-webpack-plugin": "^0.3.0",
     "webpack-dev-server": "^1.14.1"
   }
 }

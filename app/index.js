@@ -5,11 +5,11 @@ import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import methodOverride from 'koa-methodoverride';
 import logger from 'koa-logger';
+import path from 'path';
 
 import config from '../config/config';
 import router from './routes';
 import middlewares from './middlewares';
-
 
 
 const app = new Koa();
@@ -17,10 +17,8 @@ const app = new Koa();
 // console.log(config.secretKeyBase, '-------config.secretKeyBase------')
 app.keys = [config.secretKeyBase];
 
-// not serve static when deploy
-if(config.serveStatic){
-  app.use(convert(require('koa-static')(__dirname + '/../public')));
-}
+app.use(convert(require('koa-static')(path.join(__dirname + '/../public'))));
+
 
 
 app.use(bodyParser());
