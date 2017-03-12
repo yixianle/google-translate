@@ -4,7 +4,7 @@
 [translate-api](https://github.com/yixianle/translate-api) <br>
 基于爬虫技术 抓取google翻译，实现了文本翻译和网页翻译。
 ### 文本翻译
-文本翻译是通过先获取计算出google token，以post方式调用翻译接口。相比不需要计算token的get方式，突破了最大请求2048字符的限制。<br/>
+文本翻译是先计算出google token，以post方式调用翻译接口。相比不需要计算token的get方式，突破了最大请求2048字符的限制。<br/>
 ### 网页翻译
 网页翻译是通过爬虫模拟google translate网页翻译步骤
 ### 在线地址
