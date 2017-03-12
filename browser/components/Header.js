@@ -26,11 +26,11 @@ export default class Header extends Component {
     })
 
     if(isUrl(this.state.text)) return
-    // 0.5秒后再执行查询
+    // 1秒后再执行查询
     timeoutId && clearTimeout(timeoutId)
     timeoutId = setTimeout(() => {
       changeVal(input.value)
-    }, 0.5*1000);
+    }, 1*1000);
     
   }
 
