@@ -6,11 +6,10 @@
   "main": "build/index.js",
   "scripts": {
     "console": "babel-node app/index.js console",
-    "start": "supervisor app/start.js & webpack -d -w",
+    "start": "node app/start.js & webpack -d -w",
     "nodemon": "nodemon app/index.js & webpack --progress --colors --watch",
     "build": "NODE_ENV=production webpack -p && rm -rf build/ && babel -d build app",
     "pm2": "NODE_ENV=production pm2 start build/index.js -i 2 --name \"trans\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
-    "pm2:docker": "NODE_ENV=production pm2 start build/index.js --no-daemon -i 2 --name \"trans\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
     "pm2:restart": "NODE_ENV=production pm2 restart \"trans\"",
     "pm2:stop": "NODE_ENV=production pm2 stop \"trans\"",
     "pm2:monit": "NODE_ENV=production pm2 monit \"trans\"",
