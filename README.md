@@ -1,6 +1,6 @@
 # google translate
 项目采用koa2+react <br>
-由于google translate api是收费的，故翻译模块用的是我另外一个项目
+由于google translate api是收费的，翻译模块用的是我另外一个项目
 [translate-api](https://github.com/yixianle/translate-api) <br>
 基于爬虫技术 抓取google翻译，实现了文本翻译和网页翻译。
 ### 在线地址
