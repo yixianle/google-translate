@@ -18,7 +18,7 @@ export default class Header extends Component {
   handleChange = e => {
     const { changeVal } = this.props
     const input = e.target
-    
+    if(input.value && input.value.length>5000){ return alert("请不要输入超过5000字符的文本！") }
     if(isUrl(this.state.text) && /\n$/.test(input.value) ) return
     this.setState({
       text: input.value,
