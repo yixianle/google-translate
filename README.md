@@ -7,10 +7,13 @@
 http://translate.hotcn.top/
 
 <img alt="google translate" src="https://raw.githubusercontent.com/yixianle/google-translate/master/public/demo.gif">
+
 ### 文本翻译
 文本翻译是先计算出google token，以post方式调用翻译接口。相比不需要计算token的get方式，突破了最大请求2048字符的限制。<br/>
+
 ### 网页翻译
 网页翻译是通过爬虫模拟google translate 翻译步骤
+
 # 使用
 ```
 # 安装依赖
