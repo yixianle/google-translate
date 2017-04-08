@@ -13,6 +13,7 @@
 /temp
 /public/assets
 /public/uploads
+/app/services/translate
 /*-compiled.js
 /*-compiled.js.map
 *-compiled.js
