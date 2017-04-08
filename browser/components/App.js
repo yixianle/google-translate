@@ -25,11 +25,10 @@ export default class App extends Component {
     .then(function(response) {
       return response.json()
     }).then(function(json) {
-      console.log('parsed json', json)
+      
       this.setState({ transResult: json.text.replace(/\n/g, '<br \/>') })
-      //this.setState({ transResult: '马来西亚警方说，\n 他们在狩猎当天狩<br/>猎从该国逃离的四名朝鲜人' })
     }.bind(this)).catch(function(ex) {
-      console.log('parsing failed', ex)
+      console.error('parsing failed', ex)
     })
 
 

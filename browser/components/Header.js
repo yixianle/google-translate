@@ -35,7 +35,7 @@ export default class Header extends Component {
   }
 
   handleKeyDown = e =>{
-    console.log(e.keyCode,1111)
+    
     if(e.keyCode!==13) return;
     
     if(isUrl(e.target.value)){
