@@ -4,7 +4,7 @@
 [translate-api](https://github.com/yixianle/translate-api) <br>
 基于爬虫技术 抓取google翻译，实现了文本翻译和网页翻译。
 ### 在线地址
-http://translate.hotcn.top/
+http://translate.witbag.cn/
 
 <img alt="google translate" src="https://raw.githubusercontent.com/yixianle/google-translate/master/public/demo.gif">
 
